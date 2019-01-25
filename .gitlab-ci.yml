@@ -1,0 +1,33 @@
+stages:
+  - build-api
+  - build-portal
+  - build
+
+before_script:
+   - chmod +x ./shellscripts/install.sh 
+   - "./shellscripts/install.sh"
+
+build-api:
+  stage: build-api
+  script: 
+   - chmod +x ./shellscripts/build-api.sh 
+   - "./shellscripts/build-api.sh"
+  tags:
+    - deploy
+
+
+build-portal:
+  stage: build-portal
+  script: 
+    - chmod +x ./shellscripts/build-api.sh 
+    - "./shellscripts/build-portal.sh"
+  tags:
+    - deploy
+
+build:
+  stage: build
+  script:
+    - docker-compose up --build -d
+  tags:
+    - deploy
+   
