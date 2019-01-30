@@ -1,6 +1,8 @@
 stages:
   - trigger_build
 
+before_script:
+  - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
 
 trigger_build:
   stage: trigger_build
