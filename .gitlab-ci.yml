@@ -7,6 +7,9 @@ before_script:
 
 build-portal:
   stage: build-portal
+  tags:
+    - deploy
+
   script:
     - "npm install"
     - docker push registry.gitlab.com/gaiaenergy/fitme/portal
@@ -14,5 +17,7 @@ build-portal:
 
 trigger_build:
   stage: trigger_build
+  tags:
+    - deploy
   script:
     - "curl -X POST -F token=aee436b42e2a5cc0494e6139082698 -F ref=develop https://gitlab.com/api/v4/projects/10541514/trigger/pipeline"
