@@ -1,0 +1,20 @@
+{
+  "name": "fitme-portal",
+  "version": "1.0.0",
+  "description": "Fitme health ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:gaiaenergy/fitme/portal.git"
+  },
+  "keywords": [
+    "health",
+    "world",
+    "gaia"
+  ],
+  "author": "Eduardo de Moura Rodrigues",
+  "license": "ISC"
+}
