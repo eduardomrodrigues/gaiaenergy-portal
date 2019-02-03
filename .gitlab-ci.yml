@@ -4,7 +4,7 @@ stages:
 
 before_script:
   - echo $CI_JOB_TOKEN
-  - docker login -u $CI_JOB_TOKEN -p 
+  - docker login -u $CI_JOB_TOKEN -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
 
 build-portal:
   stage: build-portal
