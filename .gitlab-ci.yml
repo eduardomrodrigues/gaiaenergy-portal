@@ -1,21 +1,5 @@
 stages:
-  - build-portal
   - trigger_build
-
-before_script:
-  - echo $CI_DEPLOY_USER
-  - echo $CI_DEPLOY_PASSWORD
-  - echo $REGISTRY_USER
-
-  - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
-
-build-portal:
-  stage: build-portal
-  tags:
-    - deploy
-  script:
-    - "npm install"
-    - docker push registry.gitlab.com/gaiaenergy/fitme/portal
 
 
 trigger_build:
