@@ -14,5 +14,9 @@
     "health"
   ],
   "author": "Eduardo de Moura Rodrigues",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "ts-node": "^8.0.2"
+  }
 }

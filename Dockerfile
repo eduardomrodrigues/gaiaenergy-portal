@@ -1,9 +1,7 @@
-FROM nginx
+FROM node:8.1.0-alpine
 
-COPY ./initialize.sh /
+WORKDIR /usr/src/app
 
-RUN chmod +x /initialize.sh
+EXPOSE 3000
 
-RUN ./initialize.sh
-
-COPY ./etc/fitme /etc/nginx/nginx.conf
+CMD ["yarn", "run", "start"]
