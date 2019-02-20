@@ -1,6 +1,18 @@
 stages:
   - trigger_build
+  - build-portal
+  
+before_script:
+  - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
 
+build-portal:
+  stage: build-portal
+  script: 
+   - docker build -t registry.gitlab.com/gaiaenergy/fitme/portal:latest -t registry.gitlab.com/gaiaenergy/fitme/portal:$CI_JOB_ID .
+  tags:
+    - deploy
+  only:
+    - develop
 
 trigger_build:
   stage: trigger_build

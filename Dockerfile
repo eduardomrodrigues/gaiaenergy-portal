@@ -1,7 +1,9 @@
-FROM node:8.1.0-alpine
+FROM nginx
 
-WORKDIR /usr/src/app
+RUN gulp dist
 
-EXPOSE 3000
+COPY static-html-directory /usr/share/nginx/html
 
-CMD ["yarn", "run", "start"]
+
+EXPOSE 3030
+
