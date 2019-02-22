@@ -1,9 +1,15 @@
-FROM nginx
+FROM node:8.15.0-jessie 
+
+RUN npm install gulp-cli -g
+
+WORKDIR /opt/portal/app
+
+COPY . .
+
+RUN npm install
 
 RUN gulp dist
 
-COPY static-html-directory /usr/share/nginx/html
-
-
 EXPOSE 3030
 
+CMD ["npm", "start"]

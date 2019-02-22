@@ -4,7 +4,8 @@
   "description": "Portal for health",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,13 @@
   "author": "Eduardo de Moura Rodrigues",
   "license": "ISC",
   "devDependencies": {
+    "finalhandler": "^1.1.1",
     "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-less": "^4.0.1",
+    "http": "0.0.0",
+    "serve-static": "^1.13.2",
     "ts-node": "^8.0.2"
   }
 }
