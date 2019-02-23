@@ -4,21 +4,21 @@ const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');
 
 function html() {
-  return src('app')
-    .pipe(dest('build/html'));
+  return src('app/*.html')
+    .pipe(dest('build'));
 }
 
 function css(){
   return src('app/css')
     .pipe(less())
     .pipe(minifyCSS())
-    .pipe(dest('build/css'));
+    .pipe(dest('build'));
 }
 
 function js(){
-  return src('app/javascript/*.js', {sourcemaps: true})
-    .pipe(concat('app.min.js'))
-    .pipe(dest('build/js', {sourcemaps: true}));
+  return src('app/js/*.js', {sourcemaps: true})
+    .pipe(concat('js/app.min.js'))
+    .pipe(dest('build', {sourcemaps: true}));
 
 }
 

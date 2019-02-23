@@ -2,7 +2,7 @@ var finalhandler = require('finalhandler')
 var http = require('http');
 var serveStatic = require('serve-static');
 
-var serve = serveStatic('/opt/portal/app/build', {
+var serve = serveStatic('/opt/portal/build', {
     'index': ['index.html', 'index.htm']
 });
 
