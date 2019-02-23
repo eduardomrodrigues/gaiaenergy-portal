@@ -14,8 +14,8 @@ build:
   only:
     - develop
 
-build:
-  stage: build
+deploy:
+  stage: deploy
   tags:
     - deploy
   script:
