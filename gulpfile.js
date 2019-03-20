@@ -10,7 +10,8 @@ const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
-const reload = browserSync.reload;
+const uglify = require('gulp-uglify');
+
 
 function clearAllHtmls() {
   return src('build/*.html')
@@ -36,11 +37,8 @@ function clearAllCss() {
 function html() {
   clearAllHtmls();
 
-  console.log('html');
-
   return src('app/*.html')
-    .pipe(dest('build'))
-    .pipe(browserSync.stream());
+    .pipe(dest('build'));
 }
 
 function css() {
@@ -49,22 +47,20 @@ function css() {
   return src('app/css')
     .pipe(less())
     .pipe(minifyCSS())
-    .pipe(dest('build'))
-    .pipe(browserSync.stream());
+    .pipe(dest('build'));
 }
 
 function js() {
   clearAllJs();
 
-
   return src('app/js/*.js', {
       sourcemaps: true
     })
     .pipe(concat('js/app.min.js'))
+    .pipe(uglify())
     .pipe(dest('build', {
       sourcemaps: true
-    }))
-    .pipe(browserSync.stream());
+    }));
 
 }
 
@@ -72,7 +68,8 @@ function js() {
 function server() {
 
   browserSync.init({
-    server: "./build"
+    watch: true,
+    server: "./build",
   });
 
   watch(['app/*'], function (cb) {
@@ -80,7 +77,7 @@ function server() {
     css();
     js();
 
-    reload;
+    browserSync.reload();
     cb();
   })
 
