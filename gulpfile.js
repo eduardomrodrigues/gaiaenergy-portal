@@ -13,37 +13,20 @@ const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 
 
-function clearAllHtmls() {
-  return src('build/*.html')
+function cleanAll() {
+  return src('./build')
     .pipe(clean({
       force: true
     }));
 }
 
-function clearAllJs() {
-  return src('build/js/*')
-    .pipe(clean({
-      force: true
-    }));
-}
-
-function clearAllCss() {
-  return src('build/css/*.css')
-    .pipe(clean({
-      force: true
-    }));
-}
 
 function html() {
-  clearAllHtmls();
-
   return src('app/*.html')
     .pipe(dest('build'));
 }
 
 function css() {
-  clearAllCss();
-
   return src('app/css')
     .pipe(less())
     .pipe(minifyCSS())
@@ -51,8 +34,6 @@ function css() {
 }
 
 function js() {
-  clearAllJs();
-
   return src('app/js/*.js', {
       sourcemaps: true
     })
@@ -87,4 +68,4 @@ function server() {
 
 
 exports.dist = parallel(html, css, js);
-exports.dev = series(html, css, js, server);
+exports.dev = series(cleanAll, html, css, js, server);
