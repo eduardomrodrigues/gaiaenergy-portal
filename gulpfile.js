@@ -37,6 +37,11 @@ function html() {
     .pipe(dest('build'));
 }
 
+function copyRobot() {
+  return src('app/robots.txt')
+    .pipe(dest('build'));
+}
+
 function css() {
   return src('app/css', {
       allowEmpty: true
