@@ -37,7 +37,12 @@ function html() {
     .pipe(dest('build'));
 }
 
-function copyRobot() {
+function copySitemap() {
+  return src('app/sitemap.xml')
+    .pipe(dest('build'));
+}
+
+function copyRobots() {
   return src('app/robots.txt')
     .pipe(dest('build'));
 }
