@@ -38,7 +38,9 @@ function html() {
 }
 
 function css() {
-  return src('app/css')
+  return src('app/css', {
+      allowEmpty: true
+    })
     .pipe(less())
     .pipe(minifyCSS())
     .pipe(dest('build'));
