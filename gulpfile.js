@@ -13,6 +13,8 @@ const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
+const tsc = require("gulp-typescript");
+const tsProject = tsc.createProject("tsconfig.json");
 
 
 function transformSass() {
@@ -56,8 +58,16 @@ function css() {
     .pipe(dest('build'));
 }
 
+function ts() {
+  return src('app/ts/**/*.ts')
+    .pipe(tsProject())
+    .pipe(dest('build/js'));
+}
+
+
+
 function js() {
-  return src('app/js/*.js', {
+  return src('build/js/*.js', {
       sourcemaps: true
     })
     .pipe(concat('js/app.min.js'))
@@ -97,5 +107,5 @@ function server() {
 
 
 
-exports.dist = parallel(cleanAll, transformSass, html, css, js, imageMin);
-exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, server);
+exports.dist = parallel(cleanAll, transformSass, html, css, ts, js, imageMin, copySitemap, copyRobots);
+exports.dev = series(cleanAll, transformSass, html, css, ts, js, imageMin, copySitemap, copyRobots, server);
