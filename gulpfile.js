@@ -11,10 +11,21 @@ const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
+const sass = require('gulp-sass');
+const imagemin = require('gulp-imagemin');
+
+
+function transformSass() {
+  return src('app/sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(dest('build/css'));
+}
 
 
 function cleanAll() {
-  return src('./build')
+  return src('./build', {
+      allowEmpty: true
+    })
     .pipe(clean({
       force: true
     }));
@@ -42,9 +53,14 @@ function js() {
     .pipe(dest('build', {
       sourcemaps: true
     }));
-
 }
 
+function imageMin() {
+  return src('app/images/*')
+    .pipe(imagemin())
+    .pipe(dest('build/images'));
+
+}
 
 function server() {
 
@@ -53,10 +69,12 @@ function server() {
     server: "./build",
   });
 
-  watch(['app/*'], function (cb) {
+  watch(['app/**/*'], function (cb) {
+    transformSass();
     html();
     css();
     js();
+    imageMin();
 
     browserSync.reload();
     cb();
@@ -67,5 +85,5 @@ function server() {
 
 
 
-exports.dist = parallel(html, css, js);
-exports.dev = series(cleanAll, html, css, js, server);
+exports.dist = parallel(cleanAll, transformSass, html, css, js, imageMin);
+exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, server);
