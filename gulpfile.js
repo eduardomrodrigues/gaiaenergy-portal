@@ -58,24 +58,34 @@ function css() {
     .pipe(dest('build'));
 }
 
-function ts() {
+function js() {
+
   return src('app/ts/**/*.ts')
     .pipe(tsProject())
-    .pipe(dest('build/js'));
-}
-
-
-
-function js() {
-  return src('build/js/*.js', {
+    .pipe(dest('build/tmp/js'))
+    .pipe(src('build/tmp/*.js', {
       sourcemaps: true
-    })
+    }))
     .pipe(concat('js/app.min.js'))
     .pipe(uglify())
     .pipe(dest('build', {
       sourcemaps: true
     }));
+
 }
+
+
+function removeTmp() {
+
+  return src('./build/tmp', {
+    allowEmpty: true
+  }).pipe(clean({
+    force: true
+  }));
+
+
+}
+
 
 function imageMin() {
   return src('app/images/*')
@@ -95,8 +105,11 @@ function server() {
     transformSass();
     html();
     css();
+    copySitemap();
+    copyRobots();
     js();
     imageMin();
+    removeTmp();
 
     browserSync.reload();
     cb();
@@ -107,5 +120,5 @@ function server() {
 
 
 
-exports.dist = parallel(cleanAll, transformSass, html, css, ts, js, imageMin, copySitemap, copyRobots);
-exports.dev = series(cleanAll, transformSass, html, css, ts, js, imageMin, copySitemap, copyRobots, server);
+exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, removeTmp);
+exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, removeTmp, server);

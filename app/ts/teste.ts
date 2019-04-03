@@ -1,3 +1,6 @@
-export function sayHello(name: string) {
-    return `Hello from ${name}`;
+function greeter(person: string) {
+    return "Hello, " + person;
 }
+
+let user = "Jane User";
+
