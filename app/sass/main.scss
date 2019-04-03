@@ -7,9 +7,12 @@ body {
   color: $primary-color;
 }
 
-.header {
+#header-always-visible {
   background-color: grey;
-  height: 200px;
+  height: 72px;
+  z-index: 9999;
+  position: fixed;
   width: 100%;
+  top: 0px;
 
 }

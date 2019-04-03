@@ -75,6 +75,32 @@ function js() {
 }
 
 
+function copyStaticContent() {
+  copySitemap();
+  copyRobots();
+  copyJsVendor();
+  copyCssVendor();
+
+
+  return;
+
+}
+
+
+function copyJsVendor() {
+  return src('app/js/vendor/**/*.js')
+    .pipe(dest('build/js/vendor'));
+
+}
+
+function copyCssVendor() {
+  return src('app/css/vendor/**/*.css')
+  .pipe(dest('build/css/vendor'));
+
+
+}
+
+
 function removeTmp() {
 
   return src('./build/tmp', {
@@ -88,9 +114,9 @@ function removeTmp() {
 
 
 function imageMin() {
-  return src('app/images/*')
+  return src('app/img/*')
     .pipe(imagemin())
-    .pipe(dest('build/images'));
+    .pipe(dest('build/img'));
 
 }
 
@@ -105,11 +131,10 @@ function server() {
     transformSass();
     html();
     css();
-    copySitemap();
-    copyRobots();
     js();
     imageMin();
     removeTmp();
+    copyStaticContent();
 
     browserSync.reload();
     cb();
@@ -120,5 +145,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, removeTmp);
-exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, removeTmp, server);
+exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, copyJsVendor, copyCssVendor, removeTmp);
+exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, server);
