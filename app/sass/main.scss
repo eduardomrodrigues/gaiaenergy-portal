@@ -1,6 +1,8 @@
 $font-stack: Helvetica,
 sans-serif;
 $primary-color: #333;
+$imagedir:'/img/';
+
 
 body {
   font: 100% $font-stack;
@@ -8,7 +10,7 @@ body {
 }
 
 #header-always-visible {
-  background-color: grey;
+  background-color: rgba(205, 102, 59, 0.9);
   height: 72px;
   z-index: 9999;
   position: fixed;
