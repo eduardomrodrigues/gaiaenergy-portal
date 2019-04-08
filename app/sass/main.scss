@@ -1,7 +1,7 @@
 $font-stack: Helvetica,
 sans-serif;
 $primary-color: #333;
-$imagedir:'/img/';
+
 
 
 body {
@@ -10,11 +10,25 @@ body {
 }
 
 #header-always-visible {
-  background-color: rgba(205, 102, 59, 0.9);
-  height: 72px;
+  background-color: #564E5A;
+  height: 60px;
   z-index: 9999;
   position: fixed;
   width: 100%;
   top: 0px;
+  padding-top: 10px;
+}
+
+
+.content-with-fixed-header{
+
+  margin-top: 5.5em;
+  transition: 0.2s;
+
+}
+
+#logo-id{
+
+  transition: 0.4s;
 
 }
