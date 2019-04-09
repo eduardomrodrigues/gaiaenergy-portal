@@ -44,6 +44,12 @@ function copySitemap() {
     .pipe(dest('build'));
 }
 
+
+function copyAllFonts() {
+  return src('app/fonts/*')
+    .pipe(dest('build/fonts'));
+}
+
 function copyRobots() {
   return src('app/robots.txt')
     .pipe(dest('build'));
@@ -145,5 +151,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, copyJsVendor, copyCssVendor, removeTmp);
-exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, server);
+exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, copyJsVendor, copyCssVendor, copyAllFonts, removeTmp);
+exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, copyAllFonts, server);

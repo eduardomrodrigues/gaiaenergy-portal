@@ -3,6 +3,12 @@ sans-serif;
 $primary-color: #333;
 
 
+@font-face {
+  font-family: Indie-flower;
+  src: url(../fonts/IndieFlower.ttf);
+}
+
+
 
 body {
   font: 100% $font-stack;
@@ -10,7 +16,7 @@ body {
 }
 
 #header-always-visible {
-  background-color: #564E5A;
+  background-color: rgb(87, 79, 90);
   height: 60px;
   z-index: 9999;
   position: fixed;
@@ -28,7 +34,20 @@ body {
 }
 
 #logo-id{
-
   transition: 0.4s;
+}
+
+.container-header {
+  margin-right: auto;
+  margin-left: auto;
+  width: 64%;
+
+}
+
+.logo-text{
+  font-family: Indie-flower;
+  font-size: 3.0em;
+
+
 
 }
