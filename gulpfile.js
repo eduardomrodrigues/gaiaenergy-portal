@@ -11,17 +11,8 @@ const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
-const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
-const tsc = require("gulp-typescript");
-const tsProject = tsc.createProject("tsconfig.json");
 
-
-function transformSass() {
-  return src('app/sass/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(dest('build/css'));
-}
 
 
 function cleanAll() {
@@ -61,7 +52,6 @@ function css() {
 function js() {
 
   return src('app/ts/**/*.ts')
-    .pipe(tsProject())
     .pipe(dest('build/tmp/js'))
     .pipe(src('build/tmp/*.js', {
       sourcemaps: true
@@ -88,9 +78,9 @@ function removeTmp() {
 
 
 function imageMin() {
-  return src('app/images/*')
+  return src('app/img/*')
     .pipe(imagemin())
-    .pipe(dest('build/images'));
+    .pipe(dest('build/img'));
 
 }
 
@@ -102,7 +92,6 @@ function server() {
   });
 
   watch(['app/**/*'], function (cb) {
-    transformSass();
     html();
     css();
     copySitemap();
@@ -120,5 +109,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, copyJsVendor, copyCssVendor, removeTmp);
-exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, server);
+exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots, removeTmp);
+exports.dev = series(cleanAll, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, server);
