@@ -16,11 +16,11 @@ body {
 }
 
 #header-always-visible {
-  background-color: rgb(87, 79, 90);
+  background-color: black;
   height: 60px;
   z-index: 9999;
-  position: fixed;
   width: 100%;
+  position: static;
   top: 0px;
   padding-top: 10px;
 }
@@ -40,7 +40,7 @@ body {
 .container-header {
   margin-right: auto;
   margin-left: auto;
-  width: 64%;
+  width: 63%;
 
 }
 
