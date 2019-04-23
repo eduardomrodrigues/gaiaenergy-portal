@@ -2,17 +2,29 @@ $font-stack: Helvetica,
 sans-serif;
 $primary-color: #333;
 
+
+@font-face {
+  font-family: Indie-flower;
+  src: url(../fonts/IndieFlower.ttf);
+}
+
+
+
 body {
   font: 100% $font-stack;
   color: $primary-color;
 }
 
 #header-always-visible {
+<<<<<<< HEAD
   background-color: rgb(87, 79, 90);
+=======
+  background-color: black;
+>>>>>>> d1c0a07d2d1774497a22e77b89c15316aaf70528
   height: 60px;
   z-index: 9999;
-  position: fixed;
   width: 100%;
+  position: static;
   top: 0px;
   padding-top: 10px;
 }
@@ -32,13 +44,18 @@ body {
 .container-header {
   margin-right: auto;
   margin-left: auto;
+<<<<<<< HEAD
   width: 64%;
+=======
+  width: 63%;
+>>>>>>> d1c0a07d2d1774497a22e77b89c15316aaf70528
 
 }
 
 .logo-text{
   font-family: Indie-flower;
   font-size: 3.0em;
+
 
 
 }
