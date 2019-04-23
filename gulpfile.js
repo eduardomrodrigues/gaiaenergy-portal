@@ -121,4 +121,8 @@ function server() {
 
 
 exports.dist = series(cleanAll, transformSass, html, css, js, imageMin, copySitemap, copyRobots, copyJsVendor, copyCssVendor, removeTmp);
+<<<<<<< HEAD
 exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, server);
+=======
+exports.dev = series(cleanAll, transformSass, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, copyJsVendor, copyCssVendor, server);
+>>>>>>> parent of 35b4338... tentando entender
