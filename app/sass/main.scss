@@ -10,7 +10,11 @@ body {
 }
 
 #header-always-visible {
+<<<<<<< HEAD
   background-color: #564E5A;
+=======
+  background-color: rgb(87, 79, 90);
+>>>>>>> parent of d1c0a07... pegando as manhas de html/css
   height: 60px;
   z-index: 9999;
   position: fixed;
@@ -28,6 +32,23 @@ body {
 }
 
 #logo-id{
+<<<<<<< HEAD
+=======
+  transition: 0.4s;
+}
+
+.container-header {
+  margin-right: auto;
+  margin-left: auto;
+  width: 64%;
+
+}
+
+.logo-text{
+  font-family: Indie-flower;
+  font-size: 3.0em;
+
+>>>>>>> parent of d1c0a07... pegando as manhas de html/css
 
   transition: 0.4s;
 
