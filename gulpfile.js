@@ -13,6 +13,11 @@ const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 
 
+function copyAllFonts(){
+  return src('app/fonts/*')
+  .pipe(dest('./build/fonts'));
+}
+
 
 function cleanAll() {
   return src('./build', {
@@ -80,6 +85,7 @@ function server() {
     css();
     js();
     imageMin();
+    copyAllFonts();
     browserSync.reload();
     cb();
   })
@@ -89,5 +95,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots);
-exports.dev = series(cleanAll, html, css, js, imageMin, server);
+exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots, copyAllFonts);
+exports.dev = series(cleanAll, html, css, js, imageMin, copyAllFonts, server);

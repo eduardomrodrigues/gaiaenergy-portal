@@ -1,3 +1,29 @@
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('/fonts/RobotoSlab-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Bold';
+    src: url('/fonts/RobotoSlab-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url('/fonts/RobotoSlab-Regular.ttf');
+}
+
+
+@font-face {
+    font-family: 'Roboto Thin';
+    src: url('/fonts/RobotoSlab-Thin.ttf');
+}
+
+body {
+
+    font-family: 'Roboto Light';
+}
+
 #header-always-visible {
 
     width: 100vw;
@@ -6,6 +32,12 @@
     position: fixed;
     top: 0;
     left: 0;
+
+}
+
+.titulo-padrao{
+
+    font-family: 'Roboto Bold';
 
 }
 
