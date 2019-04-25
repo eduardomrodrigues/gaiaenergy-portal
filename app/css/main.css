@@ -1,0 +1,27 @@
+#header-always-visible {
+
+    width: 100vw;
+    background: black;
+    height: 85px;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+}
+
+
+#content {
+
+    width: 60vw;
+    margin: 0 auto;
+    top: 10vh;
+    position: relative;
+
+}
+
+#logo-id {
+
+    position: absolute;
+    left: 10vw;
+
+}

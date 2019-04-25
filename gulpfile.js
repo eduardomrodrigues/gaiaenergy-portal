@@ -1,7 +1,6 @@
 const {
   src,
   dest,
-  parallel,
   series,
   watch
 } = require('gulp');
@@ -27,35 +26,31 @@ function cleanAll() {
 
 function html() {
   return src('app/*.html')
-    .pipe(dest('build'));
+    .pipe(dest('./build'));
 }
 
 function copySitemap() {
   return src('app/sitemap.xml')
-    .pipe(dest('build'));
+    .pipe(dest('./build'));
 }
 
 function copyRobots() {
   return src('app/robots.txt')
-    .pipe(dest('build'));
+    .pipe(dest('./build'));
 }
 
 function css() {
-  return src('app/css', {
+  return src('app/css/**/*.css', {
       allowEmpty: true
     })
     .pipe(less())
     .pipe(minifyCSS())
-    .pipe(dest('build'));
+    .pipe(dest('./build/css'));
 }
 
 function js() {
 
-  return src('app/ts/**/*.ts')
-    .pipe(dest('build/tmp/js'))
-    .pipe(src('build/tmp/*.js', {
-      sourcemaps: true
-    }))
+  return src('app/js/**/*.js')
     .pipe(concat('js/app.min.js'))
     .pipe(uglify())
     .pipe(dest('build', {
@@ -64,17 +59,6 @@ function js() {
 
 }
 
-
-function removeTmp() {
-
-  return src('./build/tmp', {
-    allowEmpty: true
-  }).pipe(clean({
-    force: true
-  }));
-
-
-}
 
 
 function imageMin() {
@@ -94,12 +78,8 @@ function server() {
   watch(['app/**/*'], function (cb) {
     html();
     css();
-    copySitemap();
-    copyRobots();
     js();
     imageMin();
-    removeTmp();
-
     browserSync.reload();
     cb();
   })
@@ -109,5 +89,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots, removeTmp);
-exports.dev = series(cleanAll, html, css, js, imageMin, removeTmp, copySitemap, copyRobots, server);
+exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots);
+exports.dev = series(cleanAll, html, css, js, imageMin, server);
