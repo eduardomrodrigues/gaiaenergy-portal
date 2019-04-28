@@ -23,7 +23,7 @@
     border: 0;
     text-align: center;
     position: relative;
-    background-color: #bbb;
+    background-color: rgb(205, 102, 59);
     padding: 20px;
     border-radius: 5px;
     border: 0px;
@@ -46,7 +46,7 @@
 
 .one-form-label{
 
-    font-size: 1.9em;
+    font-size: 2.0em;
     width: 25%;
     color: white;
     font-family: 'Roboto Bold';
