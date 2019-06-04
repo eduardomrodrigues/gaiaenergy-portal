@@ -11,11 +11,11 @@ const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
 
-
-function copyAllFonts(){
+function copyAllFonts() {
   return src('app/fonts/*')
-  .pipe(dest('./build/fonts'));
+    .pipe(dest('./build/fonts'));
 }
 
 
@@ -55,8 +55,11 @@ function css() {
 
 function js() {
 
-  return src('app/js/**/*.js')
+  return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
     .pipe(concat('js/app.min.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(uglify())
     .pipe(dest('build', {
       sourcemaps: true
@@ -64,6 +67,16 @@ function js() {
 
 }
 
+
+
+function copyJsVendor() {
+
+  return src('app/js/vendor/**/*.js')
+    .pipe(dest('build/js/vendor', {
+      sourcemaps: true
+    }));
+
+}
 
 
 function imageMin() {
@@ -84,6 +97,7 @@ function server() {
     html();
     css();
     js();
+    copyJsVendor();
     imageMin();
     copyAllFonts();
     browserSync.reload();
@@ -95,5 +109,5 @@ function server() {
 
 
 
-exports.dist = series(cleanAll, html, css, js, imageMin, copySitemap, copyRobots, copyAllFonts);
-exports.dev = series(cleanAll, html, css, js, imageMin, copyAllFonts, server);
+exports.dist = series(cleanAll, html, css, js, imageMin, copyJsVendor, copySitemap, copyRobots, copyAllFonts);
+exports.dev = series(cleanAll, html, css, js, copyJsVendor, imageMin, copyAllFonts, server);

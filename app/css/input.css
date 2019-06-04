@@ -23,7 +23,7 @@
     border: 0;
     text-align: center;
     position: relative;
-    background-color: rgba(0, 198, 66, 0.5);
+    background-color: rgba(205, 102, 59, 0.5);
     padding: 20px;
     border-radius: 5px;
     border: 0px;
@@ -50,12 +50,13 @@
     width: 25%;
     color: white;
     font-family: 'Roboto Bold';
+    pointer-events: none;
 
 }
 
 
 .one-form-label::after{
-
+    pointer-events: all;
     clear: both;
     float: right;
     background-image: url('/img/left-arrow.png');

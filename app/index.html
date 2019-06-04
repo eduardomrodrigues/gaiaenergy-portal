@@ -16,6 +16,7 @@
 
 
     <title>Gaia Energy</title>
+    <script src="./js/vendor/jquery-3.4.0/jquery-3.4.0.min.js"></script>
     <script src="./js/app.min.js"></script>
 </head>
 
@@ -27,7 +28,8 @@
         </div>
     </header>
     <div id="content">
-        <h2 class="sub-titulo-padrao">Welcome to the <span id="fitme-word">Fitme </span>program! <br /> Tell me more about you</h2>
+        <h2 class="sub-titulo-padrao">Welcome to the <span id="fitme-word">Fitme </span>program! <br /> Tell me your
+            history</h2>
 
         <div class="form-content">
             <form>
@@ -36,18 +38,43 @@
                 <!--Início -->
 
                 <fieldset class="one-form-fieldset">
-                    <label class="one-form-label" for="one-form-input-text-id">your name, please</label>
-                    <input id="one-form-input-text-id" type="text" class="one-form-input-text">
                 </fieldset>
+
+                <ul class="one-form-container">
+                    <li>
+                        <div>
+                            <label class="one-form-label" for="one-form-input-text-id">your name, please</label>
+                            <input type="text" class="one-form-input-text" placeholder="Name">
+                        </div>
+                    </li>
+
+                    <li>
+                        <div>
+                            <label class="one-form-label" for="one-form-input-text-id">your age, please</label>
+                            <input type="text" class="one-form-input-text" placeholder="age">
+                        </div>
+                    </li>
+
+
+                    <li>
+                        <div>
+                            <label class="one-form-label" for="one-form-input-text-id">your weight, please</label>
+                            <input type="text" class="one-form-input-text" placeholder="peso">
+                        </div>
+                    </li>
+
+
+
+                </ul>
 
                 <!--Fim -->
 
             </form>
         </div>
     </div>
-    
+
     <footer>
-        
+
     </footer>
 </body>
 
