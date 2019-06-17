@@ -19,6 +19,7 @@
     src: url('/fonts/RobotoSlab-Thin.ttf');
 }
 
+
 .one-form-fieldset{
     border: 0;
     text-align: center;
@@ -27,8 +28,16 @@
     padding: 20px;
     border-radius: 5px;
     border: 0px;
+    overflow: hidden;
 
 }
+
+.one-form-fieldset > div{
+
+    position: relative;
+
+}
+
 
 .one-form-input-text{
 
@@ -40,7 +49,7 @@
     margin-top: 15px;
     font-size: 2.0em;
     padding: 3px;
-
+    
 
 }
 
@@ -51,6 +60,7 @@
     color: white;
     font-family: 'Roboto Bold';
     pointer-events: none;
+    position: relative;
 
 }
 

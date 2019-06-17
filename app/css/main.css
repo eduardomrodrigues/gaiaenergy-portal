@@ -44,6 +44,7 @@ body {
     font-family: 'Roboto Light';
 }
 
+
 footer{
 
     height: 30vh;
@@ -52,10 +53,12 @@ footer{
     width: 100%;
     background: black;
     margin: auto;
+    bottom: 0;
 }
 
 #fitme-word{
     color: #00C642;
+    position: relative;
 }
 
 #content {

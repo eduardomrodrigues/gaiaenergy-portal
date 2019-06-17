@@ -1,33 +1,56 @@
-'use strict';
+    'use strict';
+
+
+var currentSliceForm;
 
 
 $(document).ready(() => {
     $('.one-form-container').hide();
 
+    
+    currentSliceForm = getFirstRegistry();
 
-
-    var firstElement = getFirstRegistry();
-
-
-    writeOnCarrossel(firstElement)
-    markCurrentStep(firstElement);
+    writeOnCarrossel(currentSliceForm)
+    markCurrentStep(currentSliceForm);
 
     $('.one-form-label').click(nextElement);
 });
 
 
-
-function getFirstRegistry() {
-
-    return $('.one-form-container li:first-child div');
+function isFirstItem(){
 
 
 }
 
 
-function writeOnCarrossel(content) {
-    $('.one-form-fieldset').append(content.clone());
 
+function isLast(){
+
+}
+
+
+function getFirstRegistry() {
+
+    return $('.one-form-container li:first-child div');
+}
+
+
+function writeOnCarrossel(content) {
+    
+    var newComponent = content.clone();
+
+    $('.one-form-fieldset').append(newComponent);
+    
+}
+
+function writeOnCarrosselAnimate(content) {
+    
+    var newComponent = content.clone();
+
+    $('.one-form-fieldset').append(newComponent);
+    newComponent.css('left', '-110%');
+    TweenMax.to(newComponent, 1, {left: 0, ease:Back.easeOut});
+    
 }
 
 function markCurrentStep(element) {
@@ -45,34 +68,30 @@ function removeMarks() {
 
 function nextElement() {
 
-
+    currentSliceForm = $('.one-form-current-show').parent().next().children('div');
+    
     removeCurrentElement();
+    
 
-    var nextDiv = $('.one-form-current-show').parent().next().children('div');
-
-
-    writeOnCarrossel(nextDiv);
-    markCurrentStep(nextDiv);
-
+    writeOnCarrosselAnimate(currentSliceForm);
+    markCurrentStep(currentSliceForm);
+    
     $('.one-form-label').click(nextElement);
+    
 
+    
+    
 }
 
 function removeCurrentElement() {
 
-    $('.one-form-label .one-form-input-text').animate({
-
-        opacity: 0.25,
-        left: "+=50",
-        height: "toggle"
-    }, 5000, function(){
-        $('.one-form-fieldset').empty();
-
-    });
-
-
-
-
-
+    
+    TweenMax.to('.one-form-fieldset > div', 1, {left:'110%',
+        onComplete: (e)=>{
+            $(e).remove();
+        }, ease:Back.easeOut});
+    
+    
+    
 
 }
