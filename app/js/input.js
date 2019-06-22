@@ -1,13 +1,18 @@
-    'use strict';
+'use strict';
 
 
 var currentSliceForm;
+var tlAnimacaoProximo = new TimelineMax({
+    delay: 0.5,
+    repeatDelay: 0.2
+});
+
 
 
 $(document).ready(() => {
     $('.one-form-container').hide();
 
-    
+
     currentSliceForm = getFirstRegistry();
 
     writeOnCarrossel(currentSliceForm)
@@ -17,14 +22,14 @@ $(document).ready(() => {
 });
 
 
-function isFirstItem(){
+function isFirstItem() {
 
 
 }
 
 
 
-function isLast(){
+function isLast() {
 
 }
 
@@ -36,21 +41,21 @@ function getFirstRegistry() {
 
 
 function writeOnCarrossel(content) {
-    
+
     var newComponent = content.clone();
 
     $('.one-form-fieldset').append(newComponent);
-    
+
 }
 
 function writeOnCarrosselAnimate(content) {
-    
+
     var newComponent = content.clone();
 
     $('.one-form-fieldset').append(newComponent);
     newComponent.css('left', '-110%');
-    TweenMax.to(newComponent, 1, {left: 0, ease:Back.easeOut});
-    
+
+    return newComponent;
 }
 
 function markCurrentStep(element) {
@@ -69,29 +74,42 @@ function removeMarks() {
 function nextElement() {
 
     currentSliceForm = $('.one-form-current-show').parent().next().children('div');
-    
-    removeCurrentElement();
-    
 
-    writeOnCarrosselAnimate(currentSliceForm);
+
+
+    removeCurrentElement(tlAnimacaoProximo);
+
+    var nextComponent = writeOnCarrosselAnimate(currentSliceForm);
+    tlAnimacaoProximo.to(nextComponent, 1, {
+        left: 0,
+        ease: Back.easeOut
+    });
+
     markCurrentStep(currentSliceForm);
-    
-    $('.one-form-label').click(nextElement);
-    
 
-    
-    
+    $('.one-form-label').click(nextElement);
+
+
+
+
+
+
+
 }
 
-function removeCurrentElement() {
+function removeCurrentElement(tlAnimacaoProximo) {
 
-    
-    TweenMax.to('.one-form-fieldset > div', 1, {left:'110%',
-        onComplete: (e)=>{
-            $(e).remove();
-        }, ease:Back.easeOut});
-    
-    
-    
+    var currentElement = $('.one-form-fieldset > div');
+
+    tlAnimacaoProximo.to(currentElement, 1, {
+        left: '105%',
+        onComplete: function (e) {
+            currentElement.remove();
+        },
+        ease: Back.easeOut
+    });
+
+
+
 
 }
