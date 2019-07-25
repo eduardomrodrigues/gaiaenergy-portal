@@ -85,6 +85,8 @@
 body {
 
     font-family: 'Roboto Light';
+    height: 100%;
+
 }
 
 
@@ -108,10 +110,6 @@ footer {
     display: grid;
 
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(6, 150px);
-
-
-
 }
 
 #content {
@@ -121,7 +119,7 @@ footer {
     margin: 0 auto;
     margin-top: 15vh;
     top: 10vh;
-
+    min-height: 35vw;
 }
 
 
@@ -131,8 +129,10 @@ footer {
 }
 
 .sub-titulo-padrao {
+
+    grid-auto-rows: auto;
     grid-row-start: 1;
-    grid-row-end: 2;
+    grid-row-end: 4;
 }
 
 
@@ -148,6 +148,7 @@ footer {
     background-color: #F3F3F3;
     margin: auto;
 
+    border-radius: 5px 5px 5px 5px;
 }
 
 
