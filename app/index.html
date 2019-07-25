@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <link rel="stylesheet" type="text/css" href="./css/input.css">
 
 
     <title>Gaia Energy</title>
@@ -28,46 +27,27 @@
             <img id="logo-id" src="img/atabey_logo.png" width="130px" height="130px" />
         </div>
     </header>
-    <div id="content">
-        <h2 class="sub-titulo-padrao">Welcome to the <span id="fitme-word">Fitme </span>program! <br /> Tell me your
+    <div id="content" class="wrapper-grid">
+        <h2 class="sub-titulo-padrao grid12">Welcome to the <span id="fitme-word">Fitme </span>program! <br /> Tell me your
             history</h2>
 
-        <div class="form-content">
+        <div class="form-content wrapper-grid" >
+           
+            <form class="grid12">
 
+                <fieldset class="form-fieldset grid12" >
 
-                <!--Início -->
+                    <label class="form-label" for="form-input-text-id">your name, please</label>
+                    <input type="text" class="form-input-text" placeholder="Name">
 
-                <fieldset class="one-form-fieldset">
+                    <label class="form-label" for="form-input-text-id">your age, please</label>
+                    <input type="text" class="form-input-text" placeholder="age">
+
+                    <label class="form-label" for="form-input-text-id">your weight, please</label>
+                    <input type="text" class="form-input-text" placeholder="peso">
                 </fieldset>
-
-                <ul class="one-form-container">
-                    <li>
-                        <div>
-                            <label class="one-form-label" for="one-form-input-text-id">your name, please</label>
-                            <input type="text" class="one-form-input-text" placeholder="Name">
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <label class="one-form-label" for="one-form-input-text-id">your age, please</label>
-                            <input type="text" class="one-form-input-text" placeholder="age">
-                        </div>
-                    </li>
-
-
-                    <li>
-                        <div>
-                            <label class="one-form-label" for="one-form-input-text-id">your weight, please</label>
-                            <input type="text" class="one-form-input-text" placeholder="peso">
-                        </div>
-                    </li>
-
-
-                </ul>
-
-                <!--Fim -->
-
+                    
+            </form>
         </div>
     </div>
 
