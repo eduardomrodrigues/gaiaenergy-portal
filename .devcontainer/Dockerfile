@@ -1,3 +1,3 @@
-FROM eduardomrodrigues/desenvolvimento-frotend:1.0.0
+FROM eduardomrodrigues/desenvolvimento-frotend
 
 RUN npm install
