@@ -107,7 +107,5 @@ function server() {
 
 }
 
-
-
 exports.dist = series(cleanAll, html, css, js, imageMin, copyJsVendor, copySitemap, copyRobots, copyAllFonts);
 exports.dev = series(cleanAll, html, css, js, copyJsVendor, imageMin, copyAllFonts, server);
