@@ -12,6 +12,7 @@ const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
+const plumber = require('gulp-plumber');
 
 function copyAllFonts() {
   return src('app/fonts/*')
@@ -56,12 +57,13 @@ function css() {
 function js() {
 
   return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
+    .pipe(plumber())
     .pipe(concat('js/app.min.js'))
     .pipe(babel({
       presets: [
         '@babel/preset-react',
-        '@babel/preset-env',
-      ]
+        '@babel/env'
+        ]
     }))
     .pipe(dest('build', {
       sourcemaps: true
