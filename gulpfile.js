@@ -21,8 +21,8 @@ function copyAllFonts() {
 
 function cleanAll() {
   return src('./build', {
-      allowEmpty: true
-    })
+    allowEmpty: true
+  })
     .pipe(clean({
       force: true
     }));
@@ -46,8 +46,8 @@ function copyRobots() {
 
 function css() {
   return src('app/css/**/*.css', {
-      allowEmpty: true
-    })
+    allowEmpty: true
+  })
     .pipe(less())
     .pipe(minifyCSS())
     .pipe(dest('./build/css'));
@@ -58,9 +58,11 @@ function js() {
   return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
     .pipe(concat('js/app.min.js'))
     .pipe(babel({
-      presets: ['@babel/env']
+      presets: [
+        '@babel/preset-react',
+        '@babel/preset-env',
+      ]
     }))
-    .pipe(uglify())
     .pipe(dest('build', {
       sourcemaps: true
     }));
@@ -90,6 +92,7 @@ function server() {
 
   browserSync.init({
     watch: true,
+    open: false,
     server: "./build",
   });
 
