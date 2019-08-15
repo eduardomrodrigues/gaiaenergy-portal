@@ -9,10 +9,9 @@ const minifyCSS = require('gulp-csso');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const clean = require('gulp-clean');
-const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
-const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
+const browserify = require('gulp-browserify');
 
 function copyAllFonts() {
   return src('app/fonts/*')
@@ -58,13 +57,11 @@ function js() {
 
   return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
     .pipe(plumber())
-    .pipe(concat('js/app.min.js'))
-    .pipe(babel({
-      presets: [
-        '@babel/preset-react',
-        '@babel/env'
-        ]
+    .pipe(browserify({
+      insertGlobals: true,
+      debug: true
     }))
+    .pipe(concat('js/app.min.js'))
     .pipe(dest('build', {
       sourcemaps: true
     }));
