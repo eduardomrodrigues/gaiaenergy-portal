@@ -57,10 +57,7 @@ function js() {
 
   return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
     .pipe(plumber())
-    .pipe(browserify({
-      insertGlobals: true,
-      debug: true
-    }))
+    .pipe(browserify())
     .pipe(concat('js/app.min.js'))
     .pipe(dest('build', {
       sourcemaps: true

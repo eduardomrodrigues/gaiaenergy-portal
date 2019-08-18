@@ -1,9 +1,14 @@
 {
     "files": [
-        "app/js/*.ts"
+        "app/ts/*.ts"
     ],
     "compilerOptions": {
         "noImplicitAny": true,
-        "target": "es5"
-    }
+        "target": "es6",
+        "jsx": "react",
+        "module": "commonjs"
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
