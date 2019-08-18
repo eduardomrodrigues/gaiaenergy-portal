@@ -1,14 +1,27 @@
 {
-    "files": [
-        "app/ts/*.ts"
-    ],
     "compilerOptions": {
-        "noImplicitAny": true,
+        "sourceMap": true,
+        "noImplicitAny": false,
         "target": "es6",
+        "module": "commonjs",
         "jsx": "react",
-        "module": "commonjs"
+        "allowJs": true,
+        "lib": [
+            "es2015",
+            "es2017",
+            "dom"
+        ],
+        "removeComments": true,
+        "allowSyntheticDefaultImports": false,
+        "baseUrl": "./app",
+        "paths": {
+          "components/*": [
+            "./app/components/*"
+          ],
+        }
     },
     "exclude": [
         "node_modules"
     ]
+ 
 }

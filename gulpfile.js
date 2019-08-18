@@ -12,6 +12,7 @@ const clean = require('gulp-clean');
 const imagemin = require('gulp-imagemin');
 const plumber = require('gulp-plumber');
 const browserify = require('gulp-browserify');
+const webpack = require('webpack-stream');
 
 function copyAllFonts() {
   return src('app/fonts/*')
@@ -55,10 +56,9 @@ function css() {
 
 function js() {
 
-  return src(['app/js/**/*.js', '!app/js/vendor/**/*.js'])
+  return src(['app/components/**/*.ts', 'app/components/**/*.tsx','!app/js/vendor/**/*.js'])
     .pipe(plumber())
-    .pipe(browserify())
-    .pipe(concat('js/app.min.js'))
+    .pipe(webpack(require('./webpack.config.js') ))
     .pipe(dest('build', {
       sourcemaps: true
     }));

@@ -1,10 +1,10 @@
 var path = require("path");
 var config = {
-  entry: ["./app/ts/app.tsx"],
-  mode: "development",
+  entry: "./app/index.tsx",
+  mode: "production",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js"
+    filename: "js/app.min.js"
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
