@@ -8,8 +8,8 @@ class App extends React.Component<PageInterface, {}> {
   render() {
     return (
       <div className="wrapper-grid">
-          <Welcome />
-         <UserForm />
+        <Welcome />
+        <UserForm />
       </div>
     );
   }

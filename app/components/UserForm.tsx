@@ -1,12 +1,16 @@
 import * as React from 'react';
 
+import InputField from './InputField';
+
 class UserForm extends React.Component {
 
     render(){
 
-        return (<form>
-            Dudu
-        </form>)
+        return (
+            <form>
+                <InputField />
+            </form>
+        );
     }
 
 }
